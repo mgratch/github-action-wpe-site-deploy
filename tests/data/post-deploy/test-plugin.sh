@@ -1,3 +1,5 @@
+#!/bin/bash
+
 cleanup() {
     rm tests/data/post-deploy/test-plugin.sh
 }
