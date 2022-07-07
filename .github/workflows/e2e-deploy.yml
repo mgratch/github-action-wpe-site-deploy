@@ -1,0 +1,30 @@
+name: Test e2e Deploy to WP Engine
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+
+jobs:
+  run_action:
+    runs-on: ubuntu-latest
+    steps: 
+      - uses: actions/checkout@v3
+      - name: Bump test plugin version number
+        run: sed -i 's/0.0.1/0.0.2/' tests/data/test-plugin/test-plugin.php
+      - name: GitHub Action Deploy to WP Engine
+        uses: ./
+        with:
+          # Deploy vars 
+          WPE_SSHG_KEY_PRIVATE: ${{ secrets.WPE_SSHG_KEY_PRIVATE }} 
+          WPE_ENV: ghae2e
+          # Deploy Options
+          SRC_PATH: "tests/data/plugins/test-plugin"
+          REMOTE_PATH: "wp-content/plugins/"
+          PHP_LINT: TRUE
+          FLAGS: -r --backup --backup-dir=/tmp --itemize-changes
+          SCRIPT: "scripts/test-plugin.sh"
+          CACHE_CLEAR: TRUE
