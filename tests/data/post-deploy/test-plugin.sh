@@ -17,4 +17,4 @@ else
 fi
 
 # Cleanup
-rm scripts/test-plugin.sh
+rm post-deploy/test-plugin.sh
