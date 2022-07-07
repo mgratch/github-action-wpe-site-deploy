@@ -14,7 +14,7 @@ jobs:
     steps: 
       - uses: actions/checkout@v3
       - name: Bump test plugin version number
-        run: sed -i 's/0.0.1/0.0.2/' tests/data/test-plugin/test-plugin.php
+        run: sed -i 's/0.0.1/0.0.2/' tests/data/plugins/test-plugin/test-plugin.php
       - name: GitHub Action Deploy to WP Engine
         uses: ./
         with:
