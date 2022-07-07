@@ -26,5 +26,5 @@ jobs:
           REMOTE_PATH: "wp-content/plugins/"
           PHP_LINT: TRUE
           FLAGS: -r --backup --backup-dir=/tmp --itemize-changes
-          SCRIPT: "post-deploy/test-plugin.sh"
+          SCRIPT: "tests/data/post-deploy/test-plugin.sh"
           CACHE_CLEAR: TRUE
